@@ -51,6 +51,7 @@ print(f'Dear {guests[3]}, you are invited')
 print(f'Dear {guests[4]}, you are invited')
 print(f'Dear {guests[5]}, you are invited')
 print(f'Dear {guests[6]}, you are invited')
+print("-----------")
 
 # Remove everyone from your list one at a time
 # Pop everyone but two and print a message uninviting them
@@ -71,3 +72,47 @@ print(f'{guests[1]}, you are still invited.')
 del guests[0]
 del guests[0]
 print(f'Final list: {guests}')
+print("-----------")
+
+# Think of 5 places in the world you would like to visit. Store the locations in a list.
+# Print the list in it's original order
+# Use sorted() to print in alphabetical order without modifying the original
+# Print the list in the original order
+# Use reverse to change the order
+# Use reverse again
+# Use sort to sort in alphabetical order
+# Use sort to sort in reverse alphabetical order
+
+print('Exercise 8:')
+places_to_visit = ['Venice', 'Seattle', 'Portland', 'Alaska', 'Mexico']
+print(places_to_visit)
+print(f'Sorted: {sorted(places_to_visit)}')
+print(places_to_visit)
+places_to_visit.reverse()
+print(f'Reversed: {places_to_visit}')
+places_to_visit.reverse()
+print(f'Reversed again: {places_to_visit}')
+places_to_visit.sort()
+print(f'Sort: {places_to_visit}')
+places_to_visit.sort(reverse=True)
+print(f'Sorted reverse: {places_to_visit}')
+print("-----------")
+
+# Print the length of one of the guest lists above
+
+print('Exercise 9: ')
+print(f'I invited {len(names)} people to my party.')
+print("-----------")
+
+# Write a list and use every function in this chapter at least once.
+my_list = ['Zebra', 'Cow', 'Duck', 'Dog', 'Cat', 'Tiger']
+print(f'I know {len(my_list)} animals. The {my_list[2]} is my favorite animal. I currently know these animals: {my_list}')
+my_list.insert(2, 'Fish')
+my_list.append('Bear')
+print(f'Today I learned about the {my_list[2]} and {my_list[-1]}. Now I know these animals: {my_list}')
+my_list.sort()
+popped_item = my_list.pop()
+print(f'Today I forgot what a {popped_item} is. I now only know these animals: {my_list}')
+my_list.sort(reverse=True)
+del my_list[3]
+print(f'These are the animals I now know: {my_list}')
