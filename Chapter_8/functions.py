@@ -58,6 +58,8 @@ print("-----------")
 # Call your function with at least three city-country pairs, and print the value
 # that’s returned.
 print('Exercise 6:')
+def city_country():
+    pass
 
 print("-----------")
 # 8-7. Album: Write a function called make_album() that builds a dictionary
