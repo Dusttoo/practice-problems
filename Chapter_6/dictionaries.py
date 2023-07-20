@@ -167,6 +167,17 @@ print("-----------")
 # name. Store these dictionaries in a list called pets. Next, loop through your list
 # and as you do print everything you know about each pet.
 print('Exercise 8:')
+yenko = {'type': 'dog', 'owner': 'dusty'}
+aspen = {'type': 'dog', 'owner': 'michelle'}
+toast = {'type': 'dog', 'owner': 'dusty'}
+aslan = {'type': 'dog', 'owner': 'michelle'}
+bleaux = {'type': 'dog', 'owner': 'michelle'}
+
+pets = [yenko, aspen, toast, aslan, bleaux]
+for pet in pets:
+    type = pet['type']
+    owner = pet['owner']
+    print(f'This pet is a {type} owned by {owner}')
 
 print("-----------")
 
@@ -177,7 +188,20 @@ print("-----------")
 # to name a few of their favorite places. Loop through the dictionary, and print
 # each person’s name and their favorite places.
 print('Exercise 9:')
+favorite_places = {
+    'dusty': {'favorite_places': ['Venice', 'Seattle', 'Austin']},
+    'michelle': {'favorite_places': ['Venice', 'Mountains']},
+    'michael': {'favorite_places': ['Lake']},
+    'jenna': {'favorite_places': ['Beach']},
+}
 
+for key, value in favorite_places.items():
+    if len(value['favorite_places']) == 1:
+        place = value['favorite_places'][0]
+        print(f'{key}\'s favorite place is {place}')
+    else:
+       print(f'{key}\'s favorite places are:')
+       [print(place) for place in value['favorite_places']]
 print("-----------")
 
 
@@ -185,6 +209,22 @@ print("-----------")
 # each person can have more than one favorite number. Then print each person’s
 # name along with their favorite numbers.
 print('Exercise 10:')
+favorite_numbers = {
+    "Dusty": [7, 11, 13],
+    "Michelle": [3, 11, 16],
+    "Michael": [4],
+    "Jenna": [5, 6, 7],
+    "Bob": [12]
+}
+
+for key, value in favorite_numbers.items():
+    if len(value) == 1:
+        print(f'{key}\'s favorite number is {value[0]}')
+    else:
+        print(f'{key}\'s favorite numbers are:')
+        for number in value:
+            print(number)
+
 
 print("-----------")
 
@@ -195,7 +235,27 @@ print("-----------")
 # about that city. The keys for each city’s dictionary should be something like
 # country, population, and fact. Print the name of each city and all of the information you have stored about it.
 print('Exercise 11:')
-
+cities = {
+    'Venice': {
+        'country': 'Italy', 
+        'population': '258,685',
+        'fact': 'The city rests on 118 islands separated by 150 canals'
+        },
+    'Seattle': {
+        'country': 'United States',
+        'population': '4.02 million',
+        'fact': 'Seattle is the best city in the country for bicyclists'
+    },
+    'Austin': {
+        'country': 'United States',
+        'population': '964,177',
+        'fact': 'Austin has the largest urban bat colony in North America'
+    },
+}
+for key, value in cities.items():
+    print(f'Here is what I know about {key}:')
+    for k, v in value.items():
+        print(f'The {k} is {v}.')
 print("-----------")
 
 
