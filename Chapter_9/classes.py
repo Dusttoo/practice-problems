@@ -1,15 +1,41 @@
 # 9-1. Restaurant: Make a class called Restaurant. The __init__() method for
 # Restaurant should store two attributes: a restaurant_name and a cuisine_type.
 # Make a method called describe_restaurant() that prints these two pieces of
-# information, and a method called open_restaurant() that prints a message indicating that the restaurant is open.
-# Make an instance called restaurant from your class . Print the two attributes individually, and then call both methods.
+# information, and a method called open_restaurant() that prints a message indicating 
+# that the restaurant is open.
+# Make an instance called restaurant from your class . 
+# Print the two attributes individually, and then call both methods.
 print('Exercise 1:')
+class Restaurant():
+    def __init__(self, restaurant_name, cuisine_type):
+        self.restaurant_name = restaurant_name
+        self.cuisine_type = cuisine_type
+    
+    def describe_restaurant(self):
+        print(f'This restaurant is called {self.restaurant_name.title()} and serves {self.cuisine_type} cuisine.')
+
+    def open_restaurant(self):
+        print(f'{self.restaurant_name.title()} is now open.')
+
+restaurant = Restaurant("Torchys", "Mexican")
+
+print(restaurant.restaurant_name)
+print(restaurant.cuisine_type)
+restaurant.describe_restaurant()
+restaurant.open_restaurant()
 
 print("-----------")
 # 9-2. Three Restaurants: Start with your class from Exercise 9-1. Create three
 # different instances from the class , and call describe_restaurant() for each
 # instance.
 print('Exercise 2:')
+cheddars = Restaurant('Cheddars', 'American')
+chuys = Restaurant('Chuys', 'Tex-Mex')
+canes = Restaurant('Raising Canes', 'American')
+
+cheddars.describe_restaurant()
+chuys.describe_restaurant()
+canes.describe_restaurant()
 
 print("-----------")
 # 9-3. Users: Make a class called User. Create two attributes called first_name
@@ -20,6 +46,25 @@ print("-----------")
 # Create several instances representing different users, and call both methods
 # for each user.
 print('Exercise 3:')
+class User():
+    def __init__(self, first_name, last_name, age, gender, location):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.location = location
+
+    def describe_user(self):
+        pronoun = 'She' if self.gender.lower() == 'female' else 'He'
+        print(f'Meet {self.first_name.title()} {self.last_name.title()}. {pronoun} is {str(self.age)} years old and live in {self.location.title()}.')
+
+dusty = User('dusty', 'mumphrey', 27, 'male', 'gilmer')
+michelle = User('michelle', 'mumphrey', 39, 'female', 'gilmer')
+bob = User('bob', 'smith', 54, 'male', 'texarkana')
+
+dusty.describe_user()
+michelle.describe_user()
+bob.describe_user()
 
 print("-----------")
 # 9-4. Number Served: Start with your program from Exercise 9-1 (page 166).
