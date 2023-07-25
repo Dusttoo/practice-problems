@@ -10,12 +10,22 @@ class Restaurant():
     def __init__(self, restaurant_name, cuisine_type):
         self.restaurant_name = restaurant_name
         self.cuisine_type = cuisine_type
+        self.number_served = 0
+        
     
     def describe_restaurant(self):
         print(f'This restaurant is called {self.restaurant_name.title()} and serves {self.cuisine_type} cuisine.')
 
     def open_restaurant(self):
         print(f'{self.restaurant_name.title()} is now open.')
+    
+    def set_number_served(self, num_served):
+        self.number_served = num_served
+        print(f'{self.restaurant_name} has served {self.number_served}')
+    
+    def increment_number_served(self, num_served):
+        self.number_served += num_served
+        print(f'{self.restaurant_name} has served {self.number_served}')
 
 restaurant = Restaurant("Torchys", "Mexican")
 
@@ -53,10 +63,20 @@ class User():
         self.age = age
         self.gender = gender
         self.location = location
+        self.login_attempts = 0
 
     def describe_user(self):
         pronoun = 'She' if self.gender.lower() == 'female' else 'He'
         print(f'Meet {self.first_name.title()} {self.last_name.title()}. {pronoun} is {str(self.age)} years old and live in {self.location.title()}.')
+
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+        print(f'{self.first_name.title()} has {self.login_attempts} login attempts.')
+    
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+        print(f'Login attempts reset. {self.first_name.title()} has {self.login_attempts} login attempts.')
+
 
 dusty = User('dusty', 'mumphrey', 27, 'male', 'gilmer')
 michelle = User('michelle', 'mumphrey', 39, 'female', 'gilmer')
@@ -79,6 +99,12 @@ print("-----------")
 # like that could represent how many customers were served in, say, a
 # day of business.
 print('Exercise 4:')
+new_restuaraunt = Restaurant('Dustys', 'American')
+new_restuaraunt.describe_restaurant()
+message = f'{new_restuaraunt.restaurant_name} has served {new_restuaraunt.number_served}'
+print(message)
+new_restuaraunt.set_number_served(5)
+new_restuaraunt.increment_number_served(20)
 
 print("-----------")
 # 9-5. Login Attempts: Add an attribute called login_attempts to your User
@@ -91,6 +117,14 @@ print("-----------")
 # properly, and then call reset_login_attempts(). Print login_attempts again to
 # make sure it was reset to 0.
 print('Exercise 5:')
+new_user = User('dusty', 'mumphrey', 27, 'male', 'gilmer')
+print(f'{new_user.first_name.title()} has {new_user.login_attempts} login attempts.')
+new_user.increment_login_attempts()
+new_user.increment_login_attempts()
+new_user.increment_login_attempts()
+new_user.reset_login_attempts()
+
+
 
 print("-----------")
 # 9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. Write
