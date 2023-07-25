@@ -5,6 +5,9 @@
 # that the restaurant is open.
 # Make an instance called restaurant from your class . 
 # Print the two attributes individually, and then call both methods.
+import ipaddress
+import binascii
+from collections import OrderedDict
 print('Exercise 1:')
 class Restaurant():
     def __init__(self, restaurant_name, cuisine_type):
@@ -135,6 +138,22 @@ print("-----------")
 # flavors that stores a list of ice cream flavors. Write a method that displays
 # these flavors. Create an instance of IceCreamStand, and call this method.
 print('Exercise 6:')
+class IceCreamStand(Restaurant):
+    def __init__(self, restaurant_name, cuisine_type, flavors):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = flavors
+
+    def display_flavors(self):
+        flavors = 'This stand has '
+        for flavor in self.flavors:
+            if flavor != self.flavors[-1]:
+                flavors += f'{flavor}, '
+            else:
+                flavors += f'and {flavor}.'
+        print(flavors)
+
+my_stand = IceCreamStand('Bahama Bucks', 'Ice Cream', ['chocolate', 'vanilla', 'rocky road', 'strawberry'])
+my_stand.display_flavors()
 
 print("-----------")
 # 9-7. Admin: An administrator is a special kind of user. Write a class called
@@ -144,6 +163,10 @@ print("-----------")
 # Write a method called show_privileges() that lists the administrator’s set of
 # privileges. Create an instance of Admin, and call your method.
 print('Exercise 7:')
+class Administrator(User):
+    def __init__(self, first_name, last_name, age, gender, location, privilages):
+        super().__init__(first_name, last_name, age, gender, location)
+        self.privilages = Privilages(privilages)
 
 print("-----------")
 # 9-8. Privileges: Write a separate Privileges class . The class should have one
@@ -152,6 +175,23 @@ print("-----------")
 # as an attribute in the Admin class . Create a new instance of Admin and use your
 # method to show its privileges.
 print('Exercise 8:')
+class Privilages():
+    def __init__(self, privilages):
+        self.privilages = privilages
+    def show_privilages(self):
+        privilages = 'This user has the following privilages: '
+        for privilage in self.privilages:
+            if privilage != self.privilages[-1]:
+                privilages += f'{privilage}, '
+            else:
+                privilages += f'and {privilage}.'
+        print(privilages)
+
+
+privilages = ['can add post', 'can delete post', 'can ban user']
+admin = Administrator('Dusty', 'Mumphrey', 27, 'Male', 'Gilmer', privilages)
+
+admin.privilages.show_privilages()
 
 print("-----------")
 # 9-9. Battery Upgrade: Use the final version of electric_car.py from this section.
@@ -161,17 +201,90 @@ print("-----------")
 # then call get_range() a second time after upgrading the battery. You should
 # see an increase in the car’s range.
 print('Exercise 9:')
+class Car:
+    """A simple attempt to represent a car."""
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+
+    def read_odometer(self):
+        print(f"This car has {self.odometer_reading} miles on it.")
+
+    def update_odometer(self, mileage):
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+
+
+class Battery:
+    """A simple attempt to model a battery for an electric car."""
+
+    def __init__(self, battery_size=75):
+        """Initialize the battery's attributes."""
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        range = round(self.battery_size * 3.15)
+        print(f"This car can go about {range} miles on a full charge.")
+    
+    def upgrade_battery(self):
+        if self.battery_size < 85:
+            self.battery_size = 85
+
+
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+
+    def __init__(self, make, model, year):
+        """
+        Initialize attributes of the parent class.
+        Then initialize attributes specific to an electric car.
+        """
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print(f"This car has a {self.battery_size}-kWh battery.")
+
+
+my_tesla = ElectricCar('tesla', 'model s', 2019)
+print(my_tesla.get_descriptive_name())
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
+print('Upgrading battery...')
+my_tesla.battery.upgrade_battery()
+print('Upgrade complete')
+my_tesla.battery.get_range()
+
 
 print("-----------")
 # 9-10. Imported Restaurant: Using your latest Restaurant class , store it in a module. Make a separate file that imports Restaurant. Make a Restaurant instance,
 # and call one of Restaurant’s methods to show that the import statement is working properly.
 print('Exercise 10:')
-
+print("Done")
 print("-----------")
 # 9-11. Imported Admin: Start with your work from Exercise 9-8 (page 178).
 # Store the classes User, Privileges, and Admin in one module. Create a separate file, make an Admin instance, and call show_privileges() to show that
 # everything is working correctly.
 print('Exercise 11:')
+print("Done")
 
 print("-----------")
 # 9-12. Multiple Modules: Store the User class in one module, and store the
@@ -179,6 +292,7 @@ print("-----------")
 # an Admin instance and call show_privileges() to show that everything is still
 # working correctly.
 print('Exercise 12:')
+print("Done")
 
 print("-----------")
 # 9-13. OrderedDict Rewrite: Start with Exercise 6-4 (page 108), where you
@@ -186,9 +300,17 @@ print("-----------")
 # the OrderedDict class and make sure the order of the output matches the order
 # in which key-value pairs were added to the dictionary.
 print('Exercise 13:')
-
+favorite_languages = OrderedDict()
+favorite_languages['jen'] = 'python'
+favorite_languages['sarah'] = 'c'
+favorite_languages['edward'] = 'ruby'
+favorite_languages['phil'] = 'python'
+for name, language in favorite_languages.items():
+ print(name.title() + "'s favorite language is " +
+       language.title() + ".")
 print("-----------")
-# 9-14. Dice: The module random contains functions that generate random numbers in a variety of ways. The function randint() returns an integer in the
+# 9-14. Dice: The module random contains functions that generate random numbers in a variety of ways. 
+# The function randint() returns an integer in the
 # range you provide. The following code returns a number between 1 and 6:
 # x = randint(1, 6)
 # Make a class Die with one attribute called sides, which has a default
@@ -197,6 +319,24 @@ print("-----------")
 # it 10 times.
 # Make a 10-sided die and a 20-sided die. Roll each die 10 times.
 print('Exercise 14:')
+from random import randint
+class Die():
+    def __init__(self, sides):
+        self.sides = sides
+
+    def roll_die(self):
+        print(f'You rolled a {randint(1, self.sides)}')
+
+six_die = Die(6)
+twenty_die = Die(20)
+ten_die = Die(10)
+
+for i in range(10):
+    six_die.roll_die()
+    twenty_die.roll_die()
+    ten_die.roll_die()
+    i += 1
+        
 
 print("-----------")
 # 9-15. Python Module of the Week: One excellent resource for exploring the
@@ -205,4 +345,19 @@ print("-----------")
 # looks interesting to you and read about it,
 print('Exercise 15:')
 
+
+ADDRESSES = [
+    '10.9.0.6',
+    'fdfd:87b5:b475:5e3e:b1bc:e121:a8eb:14aa',
+    '38.53.225.28'
+]
+
+for ip in ADDRESSES:
+    addr = ipaddress.ip_address(ip)
+    print('{!r}'.format(addr))
+    print('   IP version:', addr.version)
+    print('   is private:', addr.is_private)
+    print('  packed form:', binascii.hexlify(addr.packed))
+    print('      integer:', int(addr))
+    print()
 print("-----------")
