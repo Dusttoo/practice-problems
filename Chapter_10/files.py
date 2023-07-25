@@ -2,9 +2,22 @@
 # lines summarizing what you’ve learned about Python so far. Start each line
 # with the phrase In Python you can.... Save the file as learning_python.txt in the
 # same directory as your exercises from this chapter. Write a program that reads
-# the file and prints what you wrote three times. Print the contents once by reading in the entire file, once by looping over the file object, and once by storing
+# the file and prints what you wrote three times. Print the contents once by reading in the entire file, 
+# once by looping over the file object, and once by storing
 # the lines in a list and then working with them outside the with block.
 print('Exercise 1:')
+filename = 'learning_python.txt'
+python_lines = []
+
+with open(filename) as file_object:
+    lines = file_object.readlines()
+    print(lines)
+    for line in lines:
+        python_lines.append(line)
+        print(f'In Python you can {line.rstrip().lower()}.')
+
+for line in python_lines:
+    print(f'In Python you can {line.rstrip().lower()}.')
 
 print("-----------")
 # 10-2. Learning C: You can use the replace() method to replace any word in a

@@ -1,0 +1,4 @@
+Iterate through loops
+Write custom functions
+Build classes based off of the real world
+Work with data
