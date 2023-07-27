@@ -1,4 +1,4 @@
-Iterate through loops
-Write custom functions
-Build classes based off of the real world
-Work with data
+In Python you can iterate through loops
+In Python you can write custom functions
+In Python you can build classes based off of the real world
+In Python you can work with data

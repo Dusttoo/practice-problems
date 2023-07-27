@@ -14,10 +14,10 @@ with open(filename) as file_object:
     print(lines)
     for line in lines:
         python_lines.append(line)
-        print(f'In Python you can {line.rstrip().lower()}.')
+        print(line.rstrip())
 
 for line in python_lines:
-    print(f'In Python you can {line.rstrip().lower()}.')
+    print(line.rstrip())
 
 print("-----------")
 # 10-2. Learning C: You can use the replace() method to replace any word in a
@@ -30,24 +30,62 @@ print("-----------")
 # replace the word Python with the name of another language, such as C. Print
 # each modified line to the screen.
 print('Exercise 2:')
+for line in python_lines:
+    print(line.replace('Python', 'JavaScript').strip())
+
 
 print("-----------")
 # 10-3. Guest: Write a program that prompts the user for their name. When they
 # respond, write their name to a file called guest.txt.
 print('Exercise 3:')
+# name = input('Welcome! Please enter your name > \n')
+
+# with open('guests.txt', 'w') as guest_list:
+#     guest_list.write(name)
+# print(f'{name} successfully added to the guest list')
 
 print("-----------")
 # 10-4. Guest Book: Write a while loop that prompts users for their name. When
 # they enter their name, print a greeting to the screen and add a line recording
 # their visit in a file called guest_book.txt. Make sure each entry appears on a
 # new line in the file.
+from datetime import datetime
 print('Exercise 4:')
+# active = True
+# message = f'Hello! Please enter your name > \n'
+# message += f'Press \'q\' or \'quit\' to exit. \n'
+# while active:
+#     name = input(message)
+#     if name == 'q' or name =='quit':
+#         active = False
+#     else:
+#         current_time = datetime.now()
+#         with open('guest_book.txt', 'a') as guest_book:
+#             guest_book.write(f'{name} has visited at {datetime.date(current_time)} \n')
+#         print(f'Thank you for visiting {name}! Your visit has been recorded. \n')
+
+
+
 
 print("-----------")
 # 10-5. Programming Poll: Write a while loop that asks people why they like
 # programming. Each time someone enters a reason, add their reason to a file
 # that stores all the responses.
 print('Exercise 5:')
+active = True
+message = 'Why do you like programming?\n'
+message += f'Press \'q\' or \'quit\' to exit. \n'
+while active:
+    name = input("Welcome! What is your name? >\n")
+    if name.lower() == 'q' or name.lower() == 'quit':
+        active = False
+        break
+    reason = input(message)
+    if reason.lower() == 'q' or reason.lower() == 'quit':
+        active = False
+        break
+    with open('programming_reasons.txt', 'a') as programming_reasons:
+        programming_reasons.write(f'{name}: {reason}')
 
 print("-----------")
 # 10-6. Addition: One common problem when prompting for numerical input
