@@ -8,7 +8,9 @@
 # with values such as 'santiago' and 'chile' results in the correct string. Run
 # test_cities.py, and make sure test_city_country() passes.
 print('Exercise 1:')
-print('done')
+def name_city(city, country):
+    full_city_name = f'{city.title()}, {country.title()}'
+    return full_city_name
 
 print("-----------")
 # 11-2. Population: Modify your function so it requires a third parameter,
@@ -21,16 +23,9 @@ print("-----------")
 # 'population=5000000'. Run test_cities.py again, and make sure this new test
 # passes.
 print('Exercise 2:')
-
-print("-----------")
-# 11-3. Employee: Write a class called Employee. The __init__() method should
-# take in a first name, a last name, and an annual salary, and store each of these
-# as attributes. Write a method called give_raise() that adds $5000 to the
-# annual salary by default but also accepts a different raise amount.
-# Write a test case for Employee. Write two test methods, test_give_
-# default_raise() and test_give_custom_raise(). Use the setUp() method so
-# you don’t have to create a new employee instance in each test method. Run
-# your test case, and make sure both tests pass .
-print('Exercise 3:')
-
+def name_city_with_pop(city, country, population=0):
+    full_city_name = f'{city.title()}, {country.title()}'
+    if population:
+        full_city_name = f'{city.title()}, {country.title()} - {population}'
+    return full_city_name
 print("-----------")
